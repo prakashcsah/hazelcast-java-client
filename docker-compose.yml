@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  hazelcastmanagement:
+    image: hazelcast/management-center:3.12.10
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "10m"
+    ports:
+      - 18000:8080
+    mem_limit: 512m
+    environment:
+      - "JAVA_OPTS=-Dhazelcast.mc.allowMultipleLogin=true"
+      - MC_ADMIN_USER=admin
+      - MC_ADMIN_PASSWORD=admin
